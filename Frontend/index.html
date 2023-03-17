@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Event Manager</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <!-- <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon"> -->
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <script  src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript" ></script>
+
+  <script>
+    const name = document.getElementById("name").innerHTML.values;
+    const date = document.getElementById("date").innerHTML.values;
+    const price = document.getElementById("price").innerHTML.values;
+    const ticket = document.getElementById("ticket").innerHTML.values;
+    const id = document.getElementById("id").innerHTML.values;
+    const to = document.getElementById("to").innerHTML.values;
+    </script>
+
+
+  <script>
+        uploadData = async() => {
+            const walletAddress = "0x9d1F38Bbba457E824D4Ab25638E96C213E1bDbee";
+            const walletAbi = [
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "quantity",
+				"type": "uint256"
+			}
+		],
+		"name": "buyTicket",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "date",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "price",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "ticketCount",
+				"type": "uint256"
+			}
+		],
+		"name": "createEvent",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "events",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "organiser",
+				"type": "address"
+			},
+			{
+				"internalType": "string",
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "date",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "price",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "ticketCount",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "ticketRemain",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "nextId",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "tickets",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "id",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "quantity",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			}
+		],
+		"name": "transferTicket",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	}
+]
+
+const writeContract = async () => {
+                const provider = new ethers.providers.Web3Provider(window.ethereum);
+                
+                await provider.send("eth_requestAccounts", []);
+                
+                const signer = provider.getSigner();
+                const contract = new ethers.Contract(walletAddress, walletAbi, signer);
+
+                // await contract.createEvent("rock_show", 1672099857, 50, 20);
+                await contract.createEvent(name, date, price, ticket);
+                await contract.buyTicket(id, ticket);
+                await contract.transferTicket(id, ticket, to);
+                };
+            writeContract();
+        }
+        submit = async() => {
+            await uploadData();
+        }
+  </script>
+  <script></script>
+
+  <style>
+    
+    body {
+      background-color: #444442;
+      padding-top: 85px;
+    }
+
+    h1 {
+      font-family: 'Poppins', sans-serif, 'arial';
+      font-weight: 600;
+      font-size: 72px;
+      color: white;
+      text-align: center;
+    }
+
+    h4 {
+      font-family: 'Roboto', sans-serif, 'arial';
+      font-weight: 400;
+      font-size: 20px;
+      color: #9b9b9b;
+      line-height: 1.5;
+    }
+
+    /* ///// inputs /////*/
+
+    input:focus~label,
+    textarea:focus~label,
+    input:valid~label,
+    textarea:valid~label {
+      font-size: 0.75em;
+      color: #999;
+      top: -5px;
+      -webkit-transition: all 0.225s ease;
+      transition: all 0.225s ease;
+    }
+
+    .styled-input {
+      float: left;
+      width: 293px;
+      margin: 1rem 0;
+      position: relative;
+      border-radius: 4px;
+    }
+
+    @media only screen and (max-width: 768px) {
+      .styled-input {
+        width: 100%;
+      }
+    }
+
+    .styled-input label {
+      color: #999;
+      padding: 1.3rem 30px 1rem 30px;
+      position: absolute;
+      top: 10px;
+      left: 0;
+      -webkit-transition: all 0.25s ease;
+      transition: all 0.25s ease;
+      pointer-events: none;
+    }
+
+    .styled-input.wide {
+      width: 650px;
+      max-width: 100%;
+    }
+
+    input,
+    textarea {
+      padding: 30px;
+      border: 0;
+      width: 100%;
+      font-size: 1rem;
+      background-color: #2d2d2d;
+      color: white;
+      border-radius: 4px;
+    }
+
+    input:focus,
+    textarea:focus {
+      outline: 0;
+    }
+
+    input:focus~span,
+    textarea:focus~span {
+      width: 100%;
+      -webkit-transition: all 0.075s ease;
+      transition: all 0.075s ease;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 15em;
+    }
+
+    .input-container {
+      width: 650px;
+      max-width: 100%;
+      margin: 20px auto 25px auto;
+    }
+
+    .submit-btn {
+      float: right;
+      padding: 7px 35px;
+      border-radius: 60px;
+      display: inline-block;
+      background-color: #4b8cfb;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.06),
+        0 2px 10px 0 rgba(0, 0, 0, 0.07);
+      -webkit-transition: all 300ms ease;
+      transition: all 300ms ease;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(1px);
+      box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.10),
+        0 1px 1px 0 rgba(0, 0, 0, 0.09);
+    }
+
+    @media (max-width: 768px) {
+      .submit-btn {
+        width: 100%;
+        float: none;
+        text-align: center;
+      }
+    }
+
+    input[type=checkbox]+label {
+      color: #ccc;
+      font-style: italic;
+    }
+
+    input[type=checkbox]:checked+label {
+      color: #f00;
+      font-style: normal;
+    }
+  </style>
+</head>
+
+<body>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <h1 class="logo"><a href="index.html">Event Organiser</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+      <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">Create Event</a></li>
+          <li><a class="nav-link scrollto" href="#services">Buy Tokens</a></li>
+          <!--<li><a class="nav-link scrollto " href="#portfolio">Portfolio</a></li> -->
+          <li><a class="nav-link scrollto" href="#team">Transfer</a></li>
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div class="hero-container">
+      <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+        <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+        <div class="carousel-inner" role="listbox">
+
+          <!-- Slide 1 -->
+          <div class="carousel-item active" style="background-image: url(assets/img/slide/slide-1.jpg);">
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <h2 class="animate__animated animate__fadeInDown">Event Manager</h2>
+                <p class="animate__animated animate__fadeInUp">Using block chain</p>
+                <div>
+                  <!-- <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a> -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="carousel-item" style="background-image: url(assets/img/slide/slide-2.jpg);">
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <h2 class="animate__animated animate__fadeInDown">Event Manager</h2>
+                <p class="animate__animated animate__fadeInUp">Using block chain.</p>
+                <div>
+                  <!-- <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a> -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="carousel-item" style="background-image: url(assets/img/slide/slide-3.jpg);">
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <h2 class="animate__animated animate__fadeInDown">Event Manager</h2>
+                <p class="animate__animated animate__fadeInUp">Using block chain</p>
+                <div>
+                  <!-- <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a> -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+        </a>
+
+        <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+          <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+        </a>
+
+      </div>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+
+        <div class="row no-gutters">
+          <!-- <div class="image col-xl-5 d-flex align-items-stretch justify-content-center justify-content-lg-start"></div> -->
+          <div class="col-xl-7 ps-0 ps-lg-5 pe-lg-1 d-flex align-items-stretch">
+            <div class="content d-flex flex-column justify-content-center">
+
+
+              <div class="container">
+                <div class="row">
+                  <h1>create event</h1>
+                </div>
+                <div class="row">
+                  <h4 style="text-align:center"></h4>
+                </div>
+                <div class="row input-container">
+                  <div class="col-xs-12">
+                    <div class="styled-input wide">
+                      <input type="text" name="name" id="name" required placeholder="Event" />
+                      <label>name</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-sm-12">
+                    <div class="styled-input">
+                      <input type="date" name="date" id="date" required />
+                      <label>date</label>
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-sm-12">
+                    <div class="styled-input" style="float:right;"  placeholder="price">
+                      <input type="text" name="price" id="price" required />
+                      <label>price</label>
+                    </div>
+                  </div>
+                  <div class="col-xs-12">
+                    <div class="styled-input wide"  name="ticket" id="ticket"placeholder="No. of tickets">
+                      <textarea required></textarea>
+                      <label>ticket</label>
+                    </div>
+                  </div>
+                  <div class="col-xs-12">
+                    <!-- <div class="btn-lrg submit-btn">Create event</div> -->
+                    <input type="button" class="btn-lrg submit-btn" onclick="submit()" value="submit">
+                  </div>
+                </div>
+              </div>
+
+
+
+            </div><!-- End .content-->
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+ 
+    <!-- ======= Buy Tokens Section ======= -->
+    <section id="services" class="services">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Buy Tokens</h2>
+
+          <div class="container">
+            <!-- <div class="row">
+            <h1>contact us</h1> -->
+          </div>
+          <div class="row">
+            <!-- <h4 style="text-align:center">We'd love to hear from you!</h4> -->
+          </div> -->
+          <div class="row input-container">
+            <div class="col-xs-12">
+              <div class="styled-input wide">
+                <input type="text" name="id" id="id" required placeholder="id" />
+                <label>id</label>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+              <div class="styled-input">
+                <input type="text" name="tickets" id="tickets" required placeholder="No. of Tickets" />
+                <label>tickets</label>
+              </div>
+            </div>
+            <div class="col-xs-12">
+              <div class="btn-lrg submit-btn">Buy Tokens</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>End Services Section -->
+
+    
+
+    <!-- ======= Transfer Section ======= -->
+    <section id="team" class="team">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Transfer</h2>
+
+          <div class="container">
+            <div class="row">
+              <!-- <h1>contact us</h1>
+          </div>
+          <div class="row">
+              <h4 style="text-align:center">We'd love to hear from you!</h4> -->
+            </div>
+            <div class="row input-container">
+              <div class="col-xs-12">
+
+                
+                <div class="styled-input wide">
+                  <input type="text" name="id" id="id" required placeholder="id" />
+                  <label>id</label>
+                </div>
+              </div>
+              <div class="col-md-6 col-sm-12">
+                <div class="styled-input">
+                  <input type="text" name="ticket" id="ticket" required placeholder="NO. of Tickets" />
+                  <label>ticket</label>
+                </div>
+              </div>
+              <div class="col-md-6 col-sm-12">
+                <div class="styled-input" style="float:right;" placeholder="to">
+                  <input type="text" name="to" id="to" required />
+                  <label>to</label>
+                </div>
+              </div>
+              <div class="col-xs-12">
+                <div class="btn-lrg submit-btn">Transfer</div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+    </section><!-- End Transfer Section -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

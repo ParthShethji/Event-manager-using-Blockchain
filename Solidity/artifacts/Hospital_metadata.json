@@ -1,0 +1,123 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "hospital_id",
+						"type": "uint256"
+					}
+				],
+				"name": "retreive_hospital_details",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "hospital_id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "_hospital_name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_hospital_address",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_hospital_spec",
+						"type": "string"
+					}
+				],
+				"name": "store_doctor_details",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"retreive_hospital_details(uint256)": {
+					"details": "Retreive hospital details",
+					"params": {
+						"hospital_id": "hospital registration id "
+					}
+				},
+				"store_doctor_details(uint256,string,string,string)": {
+					"details": "Store hospital details",
+					"params": {
+						"_hospital_address": "hospital address ",
+						"_hospital_name": "name of hospital",
+						"_hospital_spec": "hospital specialisation",
+						"hospital_id": "hospital registration id"
+					}
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"hospital.sol": "Hospital"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"hospital.sol": {
+			"keccak256": "0xf2d0ce79c07623974cd20a3dc30a3a911d67b80001d68203d68f476bd32685da",
+			"urls": [
+				"bzz-raw://e488b5f690991e259343f742fce358b0edfba4a73db8dad407f95ba72a16b35f",
+				"dweb:/ipfs/QmcgCMMmgtCV7u9oLAUMe74FqY2bKGUQfiZXheSzWCTZky"
+			]
+		}
+	},
+	"version": 1
+}

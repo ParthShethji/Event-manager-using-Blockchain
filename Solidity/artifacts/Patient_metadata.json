@@ -1,0 +1,263 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "patient_id",
+						"type": "uint256"
+					}
+				],
+				"name": "retreive_attendant_details",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "patient_id",
+						"type": "uint256"
+					}
+				],
+				"name": "retreive_patient_details",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "patient_id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "_attendant_name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_attendant_relation",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_attendant_phn_no",
+						"type": "uint256"
+					}
+				],
+				"name": "store_attendant_details",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "patient_id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "_patient_name",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_age",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "_gender",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_height",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_weight",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "_patient_address",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_phone_no",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "_email_id",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_date",
+						"type": "uint256"
+					}
+				],
+				"name": "store_patient_details",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"details": "Store & retreive patient details",
+			"kind": "dev",
+			"methods": {
+				"retreive_attendant_details(uint256)": {
+					"details": "Retreive attendant details",
+					"params": {
+						"patient_id": "patient id "
+					}
+				},
+				"retreive_patient_details(uint256)": {
+					"details": "Retreive patient details",
+					"params": {
+						"patient_id": "patient id "
+					}
+				},
+				"store_attendant_details(uint256,string,string,uint256)": {
+					"details": "Store attendant details",
+					"params": {
+						"_attendant_name": "name of attendant",
+						"_attendant_phn_no": "phone no ",
+						"_attendant_relation": "relation to patient",
+						"patient_id": "patient id"
+					}
+				},
+				"store_patient_details(uint256,string,uint256,string,string,uint256,string,uint256,string,uint256)": {
+					"details": "Store patient details",
+					"params": {
+						"_age": "age",
+						"_date": "date",
+						"_email_id": "mail id",
+						"_gender": "gender",
+						"_height": "height",
+						"_patient_address": "address",
+						"_patient_name": "patient name",
+						"_phone_no": "phone number",
+						"_weight": "weight",
+						"patient_id": "patient id"
+					}
+				}
+			},
+			"title": "Medical records",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"patient.sol": "Patient"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"patient.sol": {
+			"keccak256": "0x941b4843813cbe9dd44cae7e5c453805dab5ae43a8615731ed89e9e178a4a23c",
+			"urls": [
+				"bzz-raw://d25bc1632095cc0fa148ff4b6849828d217970f33c833d3a65d8f507031703b6",
+				"dweb:/ipfs/QmPtZ7DZksP3dPV7RuCekuBHzLpQFRqm5kSomgEubXqkJr"
+			]
+		}
+	},
+	"version": 1
+}

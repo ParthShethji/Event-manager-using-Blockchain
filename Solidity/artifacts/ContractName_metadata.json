@@ -1,0 +1,47 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"custom:dev-run-script": "file_path",
+			"details": "Store & retreive Hospital details",
+			"kind": "dev",
+			"methods": {},
+			"title": "Hospital",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"hospital.sol": "ContractName"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"hospital.sol": {
+			"keccak256": "0xf2d0ce79c07623974cd20a3dc30a3a911d67b80001d68203d68f476bd32685da",
+			"urls": [
+				"bzz-raw://e488b5f690991e259343f742fce358b0edfba4a73db8dad407f95ba72a16b35f",
+				"dweb:/ipfs/QmcgCMMmgtCV7u9oLAUMe74FqY2bKGUQfiZXheSzWCTZky"
+			]
+		}
+	},
+	"version": 1
+}

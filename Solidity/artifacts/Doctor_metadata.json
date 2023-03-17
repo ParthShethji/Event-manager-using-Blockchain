@@ -1,0 +1,118 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint16",
+						"name": "doctor_id",
+						"type": "uint16"
+					}
+				],
+				"name": "retreive_doctor_details",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint16",
+						"name": "doctor_id",
+						"type": "uint16"
+					},
+					{
+						"internalType": "string",
+						"name": "_doctor_name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_doctor_specialisation",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_doctor_ph_no",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "_doctor_address",
+						"type": "string"
+					}
+				],
+				"name": "store_doctor_details",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"doctors.sol": "Doctor"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"doctors.sol": {
+			"keccak256": "0x19a83ae74a3674fe872d42451809560ae8a0e5ba249a5511b848c37d2a7c7ee3",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6fec38198343ed7be0e7ad4b013893c0d99e2341bd53d01a00b143dd155cf582",
+				"dweb:/ipfs/QmbbU5QTRBzpZQewYgWC3vkovb3z8JGpMWxqwG7e631cS1"
+			]
+		}
+	},
+	"version": 1
+}
